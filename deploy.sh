@@ -7,7 +7,7 @@ heroku apps:info $APP_NAME >/dev/null 2>&1
 
 if [ $? -eq 0 ]; then
   echo "The app $APP_NAME already exists."
-  heroku config:set JWT_SECRET="vH9MxvWqK5RhnGql6jiWBPAeU99gwJKxLfufjlh4yR8" SENDGRID_API_KEY='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' DATABASE_URL='mongodb+srv://tudosm:H2qYRjAzRazKDqv@taskmanagerapp.ddmulx2.mongodb.net/?retryWrites=true&w=majority' -a=$APP_NAME
+  heroku config:set JWT_SECRET="vH9MxvWqK5RhnGql6jiWBPAeU99gwJKxLfufjlh4yR8" SENDGRID_API_KEY='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' DATABASE_URL='mongodb+srv://tudosm:H2qYRjAzRazKDqv@taskmanagerapp.ddmulx2.mongodb.net/task-manager-api?retryWrites=true&w=majority' -a=$APP_NAME
   heroku buildpacks:set heroku/nodejs -a $APP_NAME
   heroku git:remote -a task-manager-renect
   git push heroku main
