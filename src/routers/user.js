@@ -24,7 +24,7 @@ router.post('/api/v1/users', async (req, res) => {
     try {
         await user.save();
         const token = await user.generateAuthToken();
-        sendWelcomeEmail(user.email, user.name);
+        // sendWelcomeEmail(user.email, user.name);
         return res.status(201).send({ user, token });
     } catch(err) {
         return res.status(400).send({error: err.message})
@@ -83,7 +83,7 @@ router.delete('/api/v1/users/me', auth, async (req, res) => {
     try {
         const user = req.user;
         await User.deleteOne({_id: user._id});
-        sendCancelationEmail(user.email, user.name)
+        // sendCancelationEmail(user.email, user.name)
         res.send(req.user);
     } catch(err) {
         return res.status(400).send({error: err.message})
@@ -96,7 +96,6 @@ const multerUpload = multer({
         fileSize: 1000000
     },
     fileFilter(req, file, cb) {
-        console.log();
         if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
             return cb(new Error('Uploaded file must be an image.'))
         }

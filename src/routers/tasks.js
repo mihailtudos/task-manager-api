@@ -33,8 +33,8 @@ router.get('/api/v1/tasks', auth, async (req, res) => {
         sort[parts[0]] = parts[1] === 'desc' ? -1 : 1;
     }
     try {
-        const task = await Task.find({ owner: req.user._id, ...match }).limit(Number(limit)).skip(Number(skip)).sort({ ...sort });
-        return res.send({ task });
+        const tasks = await Task.find({ owner: req.user._id, ...match }).limit(Number(limit)).skip(Number(skip)).sort({ ...sort });
+        return res.send({ tasks });
     } catch(err) {
         return res.status(400).send({error: err.message})
     }

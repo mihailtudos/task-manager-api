@@ -2,6 +2,7 @@ import sgMail from '@sendgrid/mail';
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 export const sendWelcomeEmail = (email, name) => {
+    console.log('Sending sendWelcomeEmail to:', email);
     sgMail.send({
         to: email,
         from: 'info@renect.co.uk',
@@ -15,6 +16,7 @@ export const sendWelcomeEmail = (email, name) => {
 }
 
 export const sendCancelationEmail = (email, name) => {
+    console.log('Sending sendCancelationEmail to:', email);
     sgMail.send({
         to: email,
         from: 'info@renect.co.uk',
